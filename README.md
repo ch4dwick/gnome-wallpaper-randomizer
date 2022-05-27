@@ -17,12 +17,14 @@ Sample schedule to change the wallpaper every minute and piping any output to sy
 ```
 */1 * * * * /home/chad/gnome-background-switcher.sh "/path/to/wallpapers" | systemd-cat -t gnome-wallpaper-randomizer
 ```
-Caveat: Always test this script in the cron not on your shell as the environments for cron and shell are different.
+
+**Caveat: Always test this script in the cron NOT on your user shell as the environments for cron and shell are different.**
 
 ## Some assumptions
-Target folder exists and is not empty.
-The contents of the folder are all image types. If there are non-images, it will probably break.
+- Target folder exists and is not empty.
+- The contents of the folder are all image types. If there are non-images, it will probably break.
 
 ## References
 - Random array element picker: https://stackoverflow.com/questions/2388488/how-to-select-a-random-item-from-an-array-in-shell
 - Nuanced change in Ubuntu 22.04 regarding picture-uri/picture-uri-dark: https://askubuntu.com/questions/66914/how-to-change-desktop-background-from-command-line-in-unity
+- Reason why tr is added in the DBUS_SESSION_BUS_ADDRESS pipeline: https://askubuntu.com/questions/926626/how-do-i-fix-warning-command-substitution-ignored-null-byte-in-input
