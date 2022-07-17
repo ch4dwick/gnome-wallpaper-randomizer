@@ -31,11 +31,11 @@ then
   PICTURE_URI=picture-uri-dark
 fi
 
+# Get the current background for tracking.
+CURRENT_BG=$($GSETTINGS get org.gnome.desktop.background $PICTURE_URI)
 # If the same image was pulled randomly, skip it. Rotate it on the next schedule.
 if [[ $CURRENT_BG != *"$RND_BG"* ]]
 then
-  # Get the current background for tracking.
-  CURRENT_BG=$($GSETTINGS get org.gnome.desktop.background $PICTURE_URI)
   /usr/bin/gsettings set org.gnome.desktop.background $PICTURE_URI "$RND_BG"
   echo Old background: "$CURRENT_BG"
   echo New background: "'$RND_BG'"
